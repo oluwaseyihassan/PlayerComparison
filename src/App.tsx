@@ -10,8 +10,6 @@ import PlayerSeasons from "./components/PlayerSeasons";
 import PlayerStats from "./components/PlayerStats";
 import { useDropdownContext } from "./Context/Context";
 import useAnimationCleanup from "./Hooks/useAnimationCleanup";
-import useLocalStorage from "./Hooks/useLocalStorage";
-import PlayerAttackingStats from "./components/PlayerAttackingStats";
 
 type DataTypes = {
   data: PlayerType[] | null;

@@ -12,7 +12,6 @@ const PlayerStats: React.FC<PlayerStatsProps> = ({
   playerStats,
   style,
   statsList,
-  playerNumber,
 }) => {
   const [stats, setStats] = useState<StatisticsType["details"]>(null);
 

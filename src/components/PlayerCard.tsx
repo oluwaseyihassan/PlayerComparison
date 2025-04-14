@@ -26,7 +26,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
 
       const activeTeam = player.teams.find((team) => {
         const isDomestic = team.team?.type === "domestic";
-        const isActive = team.end && new Date(team.end) > new Date();
+        // const isActive = team.end && new Date(team.end) > new Date();
         return isDomestic;
       });
 
