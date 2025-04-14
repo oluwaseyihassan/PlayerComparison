@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+
+@theme {
+    --color-dark: #25282f;
+    --color-light: #f8f8f8;
+    --color-dark-bg: #1b1e25 ;
+    --animate-fade-in: fade-in 0.3s ease-in-out;
+    --animate-fade-out: fade-out 0.1s ease-in-out;
+    --animate-dropdown: dropdown 0.3s ease-in-out;
+    --animate-dropdown-reverse: dropdown-reverse 0.3s ease-in-out;
+    --shadow-dark: 0px 0px 7px rgba(0, 0, 0, 0.8);
+    --shadow-light: 0 0 10px rgba(255, 255, 255, 0.5);
+  
+}
+
+*,
+*::after,
+*::before {
+  text-decoration: none;
+  box-sizing: border-box;
+  /* outline: solid 1px red; */
+}
+html {
+    background-color: #222222;
+}
+
+.scroll_bar::-webkit-scrollbar {
+    width: 4px;
+    /* background-color: #424242; */
+  }
+  
+  
+  .scroll_bar::-webkit-scrollbar-thumb {
+    background-color: #25282f;
+  }
+
+  .scroll_bar::-webkit-scrollbar-thumb:hover {
+    background-color: #686868;
+    cursor: pointer;
+  }
+
+  .scroll_bar::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      scale: 0.8;
+    }
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      scale: 1;
+    }
+    100% {
+      opacity: 0;
+      scale: 0.8;
+    }
+  }
+
+  @keyframes dropdown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes dropdown-reverse {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
