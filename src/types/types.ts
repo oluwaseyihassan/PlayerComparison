@@ -62,6 +62,10 @@ export type StatisticsType = {
     season_id: number | null;
     season: SeasonType | null;
     has_values: boolean | null;
+    team: {
+        name: string | null;
+        image_path: string | null;
+    },
     details: {
         type_id: number | null;
         player_statistic_id: number | null;

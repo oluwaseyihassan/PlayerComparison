@@ -40,10 +40,20 @@ const PlayerStats: React.FC<PlayerStatsProps> = ({
     });
     return map;
   }, [stats]);
+  console.log(playerStats)
 
 
   return (
     <div className={`${style} flex flex-col gap-2 text-white justify-center`}>
+      {/* <div className="text-sm text-gray-400">
+        <div className="h-6 w-6 rounded-full bg-dark-bg flex justify-center items-center overflow-hidden">
+      <img src={`${playerStats?.statistics?.[0]?.team?.image_path}`} alt="" />
+        </div>
+      </div>
+        <div>
+
+        {playerStats?.statistics?.[0]?.team?.name || "-"}
+        </div> */}
       {!statsList || statsList.length === 0 ? (
         <>
           <div>-</div>

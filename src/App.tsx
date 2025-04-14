@@ -71,7 +71,7 @@ function App() {
     queryFn: () =>
       getPlayerById(
         player1Id,
-        "teams.team;statistics.season.league;statistics.details.type",
+        "teams.team;statistics.season.league;statistics.details.type;statistics.team",
         `playerStatisticSeasons:${player1SeasonId}`
       ) || null,
     enabled: !!player1Id && player1SeasonId !== null,
@@ -83,7 +83,7 @@ function App() {
     queryFn: () =>
       getPlayerById(
         player2Id,
-        "teams.team;statistics.season.league;statistics.details.type",
+        "teams.team;statistics.season.league;statistics.details.type;statistics.team",
         `playerStatisticSeasons:${player2SeasonId}`
       ) || null,
     enabled: !!player2Id && player2SeasonId !== null,
@@ -121,9 +121,7 @@ function App() {
       <div
         className={`${
           showPlayers || isOpen ? "block" : "hidden"
-        } w-full h-full fixed top-0 right-0 z-10 ${
-          showPlayers ? "" : ""
-        }`}
+        } w-full h-full fixed top-0 right-0 z-10 ${showPlayers ? "" : ""}`}
         onClick={() => {
           setShowPlayers(false);
           closeDropdown();
@@ -165,7 +163,11 @@ function App() {
             />
           </div>
         )}
-        <div className={`${showPlayers ? 'blur-sm' : ''} flex flex-col justify-between items-center mb-4 gap-5`}>
+        <div
+          className={`${
+            showPlayers ? "blur-sm" : ""
+          } flex flex-col justify-between items-center mb-4 gap-5`}
+        >
           <div className="grid grid-cols-2 gap-4 w-full">
             <PlayerCard
               style={`col-span-1 `}
@@ -242,10 +244,34 @@ function App() {
             </div>
           </div>
           <div className="grid grid-cols-5 gap-4 w-full bg-dark-bg rounded-md p-3">
-            <div className="col-span-5 text-center border-b border-dark pb-1">
+            <div className="flex items-center gap-1">
+              <div className="h-5 w-5 flex items-center justify-center">
+                <img
+                  src={`${player1Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                  alt=""
+                  className="h-4"
+                />
+              </div>
+              <div className="text-xs">
+                {player1Stats?.data?.statistics?.[0]?.team?.name || ""}
+              </div>
+            </div>
+            <div className="col-span-3 text-center  pb-1">
               Top Stats
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 flex justify-end items-center gap-1">
+              <div className="text-xs">
+                {player2Stats?.data?.statistics?.[0]?.team?.name || ""}
+              </div>
+              <div className="h-5 w-5 flex items-center justify-center">
+                <img
+                  src={`${player2Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                  alt=""
+                  className="h-4"
+                />
+              </div>
+            </div>
+            <div className="col-span-1 border-dark">
               <PlayerStats
                 playerStats={player1Stats?.data || null}
                 style={``}

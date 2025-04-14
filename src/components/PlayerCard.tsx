@@ -27,7 +27,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
       const activeTeam = player.teams.find((team) => {
         const isDomestic = team.team?.type === "domestic";
         // const isActive = team.end && new Date(team.end) > new Date();
-        return isDomestic;
+        return isDomestic && team.team?.founded;
       });
 
       return activeTeam?.team || null;
@@ -40,7 +40,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
       <div className="flex flex-col justify-center items-center mb-2 bg-dark-bg rounded-md p-2 text-center relative h-full ">
         {player && (
           <div className="flex flex-col gap-2 items-center">
-            <div
+            <button
               className="absolute right-1 top-1 bg-dark-bg rounded-full p-1 cursor-pointer text-gray-300"
               onClick={() => {
                 setShowPlayers(true);
@@ -49,7 +49,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
               title={`Change ${playerNumber === 1 ? "Player 1" : "Player 2"}`}
             >
               <MdOutlineSwapHorizontalCircle />
-            </div>
+            </button>
             <div className="h-10 w-10 rounded-full bg-dark-bg flex justify-center items-center overflow-hidden">
               <img
                 src={`${player?.image_path || player_placeholder.image}`}
