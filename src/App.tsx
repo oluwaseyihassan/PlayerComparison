@@ -243,33 +243,55 @@ function App() {
               />
             </div>
           </div>
+          {(player1Stats?.data?.statistics?.[0]?.team?.name ||
+            player2Stats?.data?.statistics?.[0]?.team?.name) && (
+            <div className="w-full flex justify-between items-center bg-dark-bg rounded-md p-2">
+              <div className="flex items-center gap-1 w-[45%]">
+                {player1Stats?.data?.statistics?.[0]?.team?.name ? (
+                  <div className="h-5 w-5 flex items-center justify-center">
+                    <img
+                      src={`${player1Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                      alt=""
+                      className="h-4"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-4 w-4 bg-dark rounded-full"></div>
+                )}
+                {player1Stats?.data?.statistics?.[0]?.team?.name ? (
+                  <div className="text-xs">
+                    {player1Stats?.data?.statistics?.[0]?.team?.name || ""}
+                  </div>
+                ) : (
+                  <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
+                )}
+              </div>
+
+              <div className=" flex items-center justify-end gap-1 w-[45%] text-right">
+                {player2Stats?.data?.statistics?.[0]?.team?.name ? (
+                  <div className="text-xs">
+                    {player2Stats?.data?.statistics?.[0]?.team?.name || ""}
+                  </div>
+                ) : (
+                  <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
+                )}
+                {player2Stats?.data?.statistics?.[0]?.team?.name ? (
+                    <div className="h-5 w-5 flex items-center justify-center">
+                      <img
+                        src={`${player2Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                        alt=""
+                        className="h-4"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-4 w-4 bg-dark rounded-full"></div>
+                  )}
+              </div>
+            </div>
+          )}
           <div className="grid grid-cols-5 gap-4 w-full bg-dark-bg rounded-md p-3">
-            <div className="flex items-center gap-1">
-              <div className="h-5 w-5 flex items-center justify-center">
-                <img
-                  src={`${player1Stats?.data?.statistics?.[0]?.team?.image_path}`}
-                  alt=""
-                  className="h-4"
-                />
-              </div>
-              <div className="text-xs">
-                {player1Stats?.data?.statistics?.[0]?.team?.name || ""}
-              </div>
-            </div>
-            <div className="col-span-3 text-center  pb-1">
+            <div className="col-span-5 text-center border-b border-dark pb-1">
               Top Stats
-            </div>
-            <div className="col-span-1 flex justify-end items-center gap-1">
-              <div className="text-xs">
-                {player2Stats?.data?.statistics?.[0]?.team?.name || ""}
-              </div>
-              <div className="h-5 w-5 flex items-center justify-center">
-                <img
-                  src={`${player2Stats?.data?.statistics?.[0]?.team?.image_path}`}
-                  alt=""
-                  className="h-4"
-                />
-              </div>
             </div>
             <div className="col-span-1 border-dark">
               <PlayerStats
@@ -356,7 +378,9 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className="text-center text-xs">Powered by SportMonks API</footer>
+      <footer className={`${showPlayers ? "blur-sm" : ""} text-center text-xs`}>
+        Powered by SportMonks API
+      </footer>
     </div>
   );
 }

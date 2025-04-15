@@ -59,7 +59,7 @@ const CustomDropdown: FC<CustomDropdownProps> = ({
             <img
               src={`${selected?.league_image_path}`}
               alt=""
-              className="h-5"
+              className="h-5 w-5"
             />
           </div>
           <div className="flex flex-col text-xs">
@@ -82,7 +82,7 @@ const CustomDropdown: FC<CustomDropdownProps> = ({
             dropDownOpen
               ? "animate-dropdown opacity-100"
               : "animate-dropdown-reverse opacity-0 pointer-events-none"
-          } ${dropDownStyle} w-full max-w-[200px] bg-dark-bg text-white rounded-md shadow-lg z-10 h-fit max-h-[400px] overflow-y-scroll scroll_bar`}
+          } ${dropDownStyle} w-full max-w-[200px] bg-dark-bg text-white rounded-md shadow-lg z-10 h-fit max-h-[400px] overflow-y-scroll scroll_bar divide-y divide-dark`}
         >
           {options?.map((option, index) => (
             <button
@@ -97,16 +97,16 @@ const CustomDropdown: FC<CustomDropdownProps> = ({
                 }
               }}
             >
-              <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-full overflow-clip bg-gray-100 flex justify-center items-center">
+              <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full overflow-clip bg-gray-100 flex justify-center items-center">
                 <img
                   src={`${option?.league_image_path}`}
-                  className="h-5 w-5 sm:h-6 sm:w-6"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
                   alt=""
                 />
               </div>
               <div className="flex flex-col items-start">
-                <div className="text-sm sm:text-base">{option?.name}</div>
-                <div className="text-gray-400 text-xs text-left">{option?.league_name}</div>
+                <div className="text-xs sm:text-base">{option?.name}</div>
+                <div className="text-gray-400 text-[10px] sm:text-xs text-left">{option?.league_name}</div>
               </div>
             </button>
           ))}

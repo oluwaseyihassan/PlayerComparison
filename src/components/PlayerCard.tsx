@@ -63,13 +63,13 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
             <div className="text-sm text-gray-400">
               {currentClub ? (
                 <div className="flex gap-1 items-center">
-                  <div className="h-5 w-5 rounded-full overflow-hidden">
+                  <div className="sm:h-6 sm:w-6 w-5 h-5 rounded-full flex justify-center items-center overflow-hidden">
                     <img
                       src={`${
                         currentClub.image_path ||
                         "https://cdn.sportmonks.com/images/soccer/team_placeholder.png"
                       }`}
-                      className="h-5"
+                      className="sm:h-5 sm:w-5 h-4 w-4"
                       alt=""
                     />
                   </div>
