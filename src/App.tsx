@@ -127,7 +127,7 @@ function App() {
           closeDropdown();
         }}
       ></div>
-      <div className="text-center text-2xl mb-3 font-bold">
+      <div className={`${showPlayers ? "blur-sm" : ""} text-center text-2xl mb-3 font-bold`}>
         Player Comparison
       </div>
       <div className={` max-w-[1280px] m-auto`}>
@@ -229,7 +229,7 @@ function App() {
           </div>
           <div className="grid grid-cols-3 items gap-4 w-full bg-dark-bg rounded-md p-3">
             <div className={`col-span-1`}>
-              <PlayerDetails style={``} player={player1?.data || null} />
+              <PlayerDetails style={``} player={player1?.data || null} playerNumber={1} />
             </div>
             <div className="text-center col-span-1">
               <div>Age</div>
@@ -240,55 +240,55 @@ function App() {
               <PlayerDetails
                 style={`text-right `}
                 player={player2?.data || null}
+                playerNumber={2}
               />
             </div>
           </div>
-          {(player1Stats?.data?.statistics?.[0]?.team?.name ||
-            player2Stats?.data?.statistics?.[0]?.team?.name) && (
-            <div className="w-full flex justify-between items-center bg-dark-bg rounded-md p-2">
-              <div className="flex items-center gap-1 w-[45%]">
-                {player1Stats?.data?.statistics?.[0]?.team?.name ? (
-                  <div className="h-5 w-5 flex items-center justify-center">
-                    <img
-                      src={`${player1Stats?.data?.statistics?.[0]?.team?.image_path}`}
-                      alt=""
-                      className="h-4"
-                    />
-                  </div>
-                ) : (
-                  <div className="h-4 w-4 bg-dark rounded-full"></div>
-                )}
-                {player1Stats?.data?.statistics?.[0]?.team?.name ? (
-                  <div className="text-xs">
-                    {player1Stats?.data?.statistics?.[0]?.team?.name || ""}
-                  </div>
-                ) : (
-                  <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
-                )}
-              </div>
 
-              <div className=" flex items-center justify-end gap-1 w-[45%] text-right">
-                {player2Stats?.data?.statistics?.[0]?.team?.name ? (
-                  <div className="text-xs">
-                    {player2Stats?.data?.statistics?.[0]?.team?.name || ""}
-                  </div>
-                ) : (
-                  <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
-                )}
-                {player2Stats?.data?.statistics?.[0]?.team?.name ? (
-                    <div className="h-5 w-5 flex items-center justify-center">
-                      <img
-                        src={`${player2Stats?.data?.statistics?.[0]?.team?.image_path}`}
-                        alt=""
-                        className="h-4"
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-4 w-4 bg-dark rounded-full"></div>
-                  )}
-              </div>
+          <div className="w-full grid grid-cols-2 gap-4">
+            <div className="flex items-center gap-2 col-span-1 bg-dark-bg p-2 w-full rounded-md">
+              {player1Stats?.data?.statistics?.[0]?.team?.name ? (
+                <div className="h-5 w-5 flex items-center justify-center">
+                  <img
+                    src={`${player1Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                    alt=""
+                    className="h-4"
+                  />
+                </div>
+              ) : (
+                <div className="h-4 w-4 bg-dark rounded-full"></div>
+              )}
+              {player1Stats?.data?.statistics?.[0]?.team?.name ? (
+                <div className="text-xs">
+                  {player1Stats?.data?.statistics?.[0]?.team?.name || ""}
+                </div>
+              ) : (
+                <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
+              )}
             </div>
-          )}
+
+            <div className=" flex items-center justify-end  gap-2 col-span-1 bg-dark-bg p-2 w-full text-right rounded-md">
+              {player2Stats?.data?.statistics?.[0]?.team?.name ? (
+                <div className="text-xs">
+                  {player2Stats?.data?.statistics?.[0]?.team?.name || ""}
+                </div>
+              ) : (
+                <div className="h-3 w-[60%] bg-dark rounded-sm"></div>
+              )}
+              {player2Stats?.data?.statistics?.[0]?.team?.name ? (
+                <div className="h-5 w-5 flex items-center justify-center">
+                  <img
+                    src={`${player2Stats?.data?.statistics?.[0]?.team?.image_path}`}
+                    alt=""
+                    className="h-4"
+                  />
+                </div>
+              ) : (
+                <div className="h-4 w-4 bg-dark rounded-full"></div>
+              )}
+            </div>
+          </div>
+
           <div className="grid grid-cols-5 gap-4 w-full bg-dark-bg rounded-md p-3">
             <div className="col-span-5 text-center border-b border-dark pb-1">
               Top Stats
