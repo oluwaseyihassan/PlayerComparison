@@ -378,8 +378,12 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className={`${showPlayers ? "blur-sm" : ""} text-center text-xs`}>
-        Powered by SportMonks API
+      <footer className={`${showPlayers ? "blur-sm" : ""} flex flex-col items-center gap-1 text-xs`}>
+        <img src="https://widgets.sportmonks.com/images/logo_light.svg?cf1854b9e360f69fe169f0a1e98d94c1" alt="SportMonks logo" />
+        <div>
+
+        <span>Data provided by </span><a className="font-bold" href="https://www.sportmonks.com/football-api/">SportMonks</a>
+        </div>
       </footer>
     </div>
   );

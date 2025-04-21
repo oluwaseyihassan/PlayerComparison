@@ -47,7 +47,7 @@ const SearchPlayers: React.FC<props> = ({
   }, [showPlayers]);
 
   return (
-    <div className="w-full flex flex-col items-center z-40">
+    <div className="w-full flex flex-col items-center z-40 pt-2">
       <div className="p-2 w-full bg-dark sticky top-0">
         <input
           type="text"
@@ -77,54 +77,71 @@ const SearchPlayers: React.FC<props> = ({
           <div className=" overflow-scroll scroll_bar w-full">
             <div>Players</div>
             <div className="w-full ">
-              {data
-                .filter((player) => player.id !== player2Id)
-                .filter((player) => player.id !== player1Id)
-                .map((player) => (
-                  <button
-                    key={player.id}
-                    className="w-full flex items-center gap-4 px-2 py-1 bg-dark-bg cursor-pointer mb-2 first:rounded-t-md last:rounded-b-md outline-none focus:bg-dark-bg/30"
-                    onClick={() => {
-                      if (currentPlayer === 1 && player.id !== player2Id) {
-                        setPlayer1Id(player.id);
-                        setCurrentPlayer(2);
-                        setShowPlayers(false);
-                        setPage(1);
-                        setSearchTerm("");
-                      } else if (
-                        currentPlayer === 2 &&
-                        player.id !== player1Id
-                      ) {
-                        setPlayer2Id(player.id);
-                        setCurrentPlayer(1);
-                        setShowPlayers(false);
-                        setPage(1);
-                        setSearchTerm("");
-                      }
-                    }}
-                  >
-                    <div className="h-6 w-6 rounded-full overflow-clip">
-                      <img src={`${player.image_path}`} alt="" className=" " />
-                    </div>
-                    <div className=" text-[12px]">{player.display_name}</div>
-                  </button>
-                ))}
-            </div>
-            {pagination?.has_more && (
-              <div>
+              {data.map((player) => (
                 <button
+                  key={player.id}
+                  className={`${
+                    player.id === player1Id || player.id === player2Id
+                      ? "opacity-30 cursor-not-allowed"
+                      : ""
+                  } w-full flex items-center gap-4 px-2 py-1 bg-dark-bg cursor-pointer mb-2 first:rounded-t-md last:rounded-b-md outline-none focus:bg-dark-bg/30 `}
                   onClick={() => {
-                    if (pagination.has_more) {
-                      setPage((prevPage) => prevPage + 1);
+                    if (player.id === player1Id || player.id === player2Id) {
+                      alert(`${player.display_name} is already selected`);
+                      return;
+                    }
+                    if (currentPlayer === 1) {
+                      setPlayer1Id(player.id);
+                      setCurrentPlayer(2);
+                      setShowPlayers(false);
+                      setPage(1);
+                      setSearchTerm("");
+                    } else if (currentPlayer === 2) {
+                      setPlayer2Id(player.id);
+                      setCurrentPlayer(1);
+                      setShowPlayers(false);
+                      setPage(1);
+                      setSearchTerm("");
                     }
                   }}
-                  className="mt-2 bg-dark-bg text-sm rounded-md px-2 py-1 hover:bg-gray-600/20 transition-all duration-200"
-                  disabled={!pagination.has_more}
                 >
-                  Next Page
+                  <div className="h-6 w-6 rounded-full overflow-clip">
+                    <img src={`${player.image_path}`} alt="" className=" " />
+                  </div>
+                  <div className=" text-[12px]">{player.display_name}</div>
                 </button>
+              ))}
+            </div>
+            <div className="flex justify-between items-center w-full">
+              <div>
+                {(pagination?.current_page ?? 0) > 1 && (
+                  <button
+                    onClick={() => {
+                      setPage((prevPage) => prevPage - 1);
+                    }}
+                    className="mt-2 bg-dark-bg text-sm rounded-md px-2 py-1 hover:bg-gray-600/20 transition-all duration-200 cursor-pointer"
+                    disabled={pagination?.current_page === 1}
+                  >
+                    Previous Page
+                  </button>
+                )}
               </div>
-            )}
+              <div>
+                {pagination?.has_more && (
+                  <button
+                    onClick={() => {
+                      if (pagination.has_more) {
+                        setPage((prevPage) => prevPage + 1);
+                      }
+                    }}
+                    className="mt-2 bg-dark-bg text-sm rounded-md px-2 py-1 hover:bg-gray-600/20 transition-all duration-200 cursor-pointer"
+                    disabled={!pagination.has_more}
+                  >
+                    Next Page
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         ))}
     </div>

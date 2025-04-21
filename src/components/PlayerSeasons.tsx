@@ -24,6 +24,7 @@ const PlayerSeasons: FC<PlayerSeasonProps> = ({
     id: number | null;
     league_image_path: string;
     league_name: string;
+    league_id: number | null;
   } | null>(null);
 
   const seasonOptions =
@@ -32,6 +33,7 @@ const PlayerSeasons: FC<PlayerSeasonProps> = ({
       name: stat.season?.name || "Unknown Season",
       league_image_path: stat.season?.league?.image_path || "",
         league_name: stat.season?.league?.name || "Unknown League",
+      league_id: stat.season?.league?.id || null,
     })) || [];
 
   useEffect(() => {
@@ -47,6 +49,7 @@ const PlayerSeasons: FC<PlayerSeasonProps> = ({
         id: defaultSeason.id || null,
         league_image_path: defaultSeason.league?.image_path || "",
         league_name: defaultSeason.league?.name || "Unknown League",
+        league_id: defaultSeason.league?.id || null,
       });
     }
   }, [player]);

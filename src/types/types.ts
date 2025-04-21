@@ -51,7 +51,7 @@ export type PlayerType = {
 export interface Pagination {
     count: number | null;
     per_page: number | null;
-    current_page: number | null;
+    current_page: number;
     next_page: string | null;
     has_more: boolean | null;
 };
