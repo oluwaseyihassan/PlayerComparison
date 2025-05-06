@@ -11,7 +11,6 @@ A React application for comparing football player statistics side-by-side with a
 - View season-specific statistics for each player
 - Dynamic visualization showing which player excels in specific areas
 - Responsive design that works across desktop and mobile devices
-- Local storage persistence to remember your selected players
 
 ## Technologies Used
 
@@ -106,7 +105,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Football data provided by external API services
+- Football data provided by SportmonksApi
 - Inspired by the need for easy player comparison tools for fans and analysts
 
 ---
