@@ -47,7 +47,7 @@ function App() {
     queryFn: () =>
       getPlayerById(
         player1Id,
-        "teams.team;statistics.season.league;statistics.details.type",
+        "teams.team;statistics.season.league;statistics.details.type;position",
         ""
       ) || null,
     enabled: !!player1Id,
@@ -59,7 +59,7 @@ function App() {
     queryFn: () =>
       getPlayerById(
         player2Id,
-        "teams.team;statistics.season.league;statistics.details.type",
+        "teams.team;statistics.season.league;statistics.details.type;position",
         ""
       ) || null,
     enabled: !!player2Id,

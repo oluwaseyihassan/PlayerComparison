@@ -57,8 +57,9 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
                 className="h-9 w-9 rounded-full"
               />
             </div>
-            <div className="text-sm sm:text-base">
+            <div className="text-sm sm:text-base flex flex-col">
               {player?.display_name || "Unknown Player"}
+              <span className="text-gray-400 text-[10px]">{player.position.name ?? ""}</span>
             </div>
             <div className="text-sm text-gray-400">
               {currentClub ? (

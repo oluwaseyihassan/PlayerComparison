@@ -46,6 +46,7 @@ export type PlayerType = {
     weight: number | null;
     teams: TeamsType[] | null;
     statistics: StatisticsType[] | null;
+    position: Type
 };
 
 export interface Pagination {
@@ -103,4 +104,12 @@ export type LeagueType = {
     image_path: string | null;
     type: string | null;
     sub_type: string | null;
+}
+
+export type Type = {
+    id: number;
+    name: string | null;
+    developer_name: string | null;
+    model_type: string | null;
+    stat_group: string | null;
 }
