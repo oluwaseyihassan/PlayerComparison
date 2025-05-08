@@ -127,7 +127,11 @@ function App() {
           closeDropdown();
         }}
       ></div>
-      <div className={`${showPlayers ? "blur-sm" : ""} text-center text-2xl mb-3 font-bold`}>
+      <div
+        className={`${
+          showPlayers ? "blur-sm" : ""
+        } text-center text-2xl mb-3 font-bold`}
+      >
         Player Comparison
       </div>
       <div className={` max-w-[1280px] m-auto`}>
@@ -229,7 +233,11 @@ function App() {
           </div>
           <div className="grid grid-cols-3 items gap-4 w-full bg-dark-bg rounded-md p-3">
             <div className={`col-span-1`}>
-              <PlayerDetails style={``} player={player1?.data || null} playerNumber={1} />
+              <PlayerDetails
+                style={``}
+                player={player1?.data || null}
+                playerNumber={1}
+              />
             </div>
             <div className="text-center col-span-1">
               <div>Age</div>
@@ -378,11 +386,20 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className={`${showPlayers ? "blur-sm" : ""} flex flex-col items-center gap-1 text-xs`}>
-        <img src="https://widgets.sportmonks.com/images/logo_light.svg?cf1854b9e360f69fe169f0a1e98d94c1" alt="SportMonks logo" />
+      <footer
+        className={`${
+          showPlayers ? "blur-sm" : ""
+        } flex flex-col items-center gap-1 text-xs`}
+      >
         <div>
-
-        <span>Data provided by </span><a className="font-bold" href="https://www.sportmonks.com/football-api/">SportMonks</a>
+          <span>Data provided by </span>
+          <a
+            className="font-bold"
+            href="https://www.sportmonks.com/football-api/"
+            target="_blank"
+          >
+            SportMonks
+          </a>
         </div>
       </footer>
     </div>
