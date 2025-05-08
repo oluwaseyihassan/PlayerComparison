@@ -10,6 +10,9 @@ import PlayerSeasons from "./components/PlayerSeasons";
 import PlayerStats from "./components/PlayerStats";
 import { useDropdownContext } from "./Context/Context";
 import useAnimationCleanup from "./Hooks/useAnimationCleanup";
+import { inject } from "@vercel/analytics"
+
+inject()
 
 type DataTypes = {
   data: PlayerType[] | null;
